@@ -5,11 +5,14 @@
 
 ## Platformio Installation (Preferred)
 [RakWireless Wiscore Platformio Configuration Guide](https://learn.rakwireless.com/hc/en-us/articles/26687276346775-How-To-Perform-Installation-of-Board-Support-Package-in-PlatformIO)
+* Make sure you have installed the RAK_PATCH to your Platformio install.
+* All of the dependencies are supplied by [BeeGee-Tokyo's WisBlock-API-V2 library](https://registry.platformio.org/libraries/beegee-tokyo/WisBlock-API-V2). Do not use other implementations of Cayenne LPP, Arduino-Json, etc unless you know what you are doing.
 
 ## Firmware Overview
 | Program | Description |
 | -------------- | -------------- |
-| buoyfish-tracker.ino | main program of the firmware. the events are all attached and configured here. once the device boots, everything is triggered by the events and timers attached in the setup |
+| buoyfish-tracker.ino / main.cpp | main program of the firmware. the events are all attached and configured here. once the device boots, everything is triggered by the events and timers attached in the setup |
+| platformio.ini | Platformio configuartion file, used to link dependencies, configure compilation, programming interface, set custom parameters, etc |
 | app.h | Enable/disable MYLOG debug, configure Cayenne LPP channels for sensors, initialize sensor variables, forward declarations, etc |
 | custom_at.cpp | contains the custom ATC+Commands used to program the device over serial |
 | dr_calculator.cpp | Automatically adjusts datarate / spreading factor / time on air according to payload size |
@@ -66,6 +69,10 @@ $ nrfutil nrf5sdk-tools dfu serial -pkg buoyfish_tracker_v1_dfu_nrfutil.zip -p /
 ![Picture of the Chirpstack Console with arrows indicating the fields to fill out for device enrollment (Name, Device EUI, Device Profile, Join EUI)](https://github.com/eigenlucy/helium-wiscore-deployment/blob/master/refs/DeviceEnrollment2.png)
 
 ## Helium Enrollment Process
+### Create A Device Profile
+
+
+### Enroll A Device
 ![Flow chart showing the movement of data from the through lorawan/helium to chirpstack/node-red](https://github.com/eigenlucy/helium-wiscore-deployment/blob/master/refs/NetworkDiagram.png)
 ![Network Diagram Showing the Device Enrollment Process](https://github.com/eigenlucy/helium-wiscore-deployment/blob/master/refs/Device_Registration_Process.png)
 
