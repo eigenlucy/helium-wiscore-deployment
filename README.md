@@ -1,11 +1,14 @@
 ## Dependencies/References:
-Based on [RUI3-LowPower-Example by BeeGee-Tokyo](https://github.com/beegee-tokyo/WisBlock-API-V2)
-Uses [WisBlock-API-V2](https://github.com/beegee-tokyo/WisBlock-API-V2)
+* Based on [RUI3-LowPower-Example by BeeGee-Tokyo](https://github.com/beegee-tokyo/WisBlock-API-V2)
+* Uses [WisBlock-API-V2](https://github.com/beegee-tokyo/WisBlock-API-V2)
+* For use with [Disk91's](https://www.disk91.com/2022/technology/helium/installing-chirpstack-lorawan-network-server-for-helium/) [Chirpstack LoRaWan network server Helium IoT](https://github.com/disk91/helium-chirpstack-community)
 
-### Platformio Installation (Preferred)
+## Platformio Installation (Preferred)
 [RakWireless Wiscore Platformio Configuration Guide](https://learn.rakwireless.com/hc/en-us/articles/26687276346775-How-To-Perform-Installation-of-Board-Support-Package-in-PlatformIO)
 
-### AT+Command Configuration, Custom ATC Commands, OTAA enrollment via AT Command
+## Firmware Overview
+
+## AT+Command Configuration, Custom ATC Commands, OTAA enrollment via AT Command
 | Description | Command |
 | --------- | --------- |
 | Set Channel Band, For US915 set to band 5 | AT+BAND=5 |
@@ -19,15 +22,15 @@ Uses [WisBlock-API-V2](https://github.com/beegee-tokyo/WisBlock-API-V2)
 | Set minimum send interval | ATC+MININT=60 |
 | Print device status | ATC+STATUS |
 
-### nrfutil, nrf5sdk-tools, arduino-cli, adafruit-nrfutil usage (debugging)
-#### Reqs
+## nrfutil, nrf5sdk-tools, arduino-cli, adafruit-nrfutil usage (advanced firmware debugging, bootloader update, etc)
+### Reqs
 Compiled nrfutil, nrf5sdk-tools, and adafruit-nrfutil binaries for arch to flash new rak4631-r bootloader and firmware. included those, compiled for arch tho
 * adafruit-nrtutil
 * nrfutil (the one that includes nrf5sdk-tools, which is dif than the one on pypi ig)
 * arduino-cli
 * pyinstaller
 
-#### Command References:
+### Command References:
 * This checks if a port has been seized by another program
 ```
 $ lsof | grep ttyACM
@@ -42,6 +45,7 @@ $ nrfutil pkg generate --hw-version 52 --application-version 1 --application buo
 ```
 * This is what works to actualy flash the device
 ```
-
 $ nrfutil nrf5sdk-tools dfu serial -pkg buoyfish_tracker_v1_dfu_nrfutil.zip -p /dev/ttyACM0
-### Chirpstack Device Management
+```
+
+## Chirpstack Device Management
