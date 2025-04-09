@@ -76,12 +76,18 @@ $ nrfutil nrf5sdk-tools dfu serial -pkg buoyfish_tracker_v1_dfu_nrfutil.zip -p /
 ![Flow chart showing the movement of data from the through lorawan/helium to chirpstack/node-red](https://github.com/eigenlucy/helium-wiscore-deployment/blob/master/refs/NetworkDiagram.png)
 ![Network Diagram Showing the Device Enrollment Process](https://github.com/eigenlucy/helium-wiscore-deployment/blob/master/refs/Device_Registration_Process.png)
 
+## Areas of Investigation
+### JoinAccept/JoinRequest Loop
+#### Potential Causes
+* With LoRaWan, data rate, spreading factor, time-on-air, and effective range are intrinsically related variables due to the chirp spread spectrum modulation scheme. Currently, data rate is calculated within the sendPacket() function according to payload size, with larger payloads sent at higher data rate / lower spreading factor. When deployed, devices are showing extremely poor SNR (~-16) at a fairly high spreading factor when sending the joinRequest packets. Larger payloads (GPS/Battery reports) may be unable to reach due to the intrinsically lower range of higher bit rate transmissions. To test this, there should be a way to bypass data rate adjustment. A long term fix might be to split the payload into several smaller packets, and implement logic to increase the spreading factor / decrease the data rate in the case of poor signal integrity.
+
+
 ## Power Usage Test Results
 ### Test setup
 Power usage was monitored with a Keithly 2450 SMU in 4-wire source V/measure W mode. Force leads were connected to the RAK19007 JST header, with sense leads soldered directly to the boards' header pins. Below I will keep notes on the effects of a variety of parameters on the average and peak power usage of the device. In addition to testing a variety of software-configured parameters, such as enabling/disabling low power mode and adjusting timer intervals, we are testing the effect of sparse and overcrowded network conditions on average power usage. Packet transmission frequency, RF TX power, and time on air/SF/data-rate are monitored on an oscilloscope via directional coupler/RF power sensor.
 
 
-This setup was based on the instructions provided in the LoRa Alliance Gateway Testing and Measurement Guidelines
+This setup was based on the instructions provided in the [LoRa Alliance Gateway Testing and Measurement Guidelines](https://lora-alliance.org/wp-content/uploads/2021/04/Gateway-Test-and-Measurement-Guidelines-Issue01.pdf)
 ```
 LoRa Gateway under test -IN-> 30dB attenuation -> ZX30-9-4-S+ directional coupler -OUT-> 50ohm RF dummy load / LoRa Spec Antenna
                                                           \

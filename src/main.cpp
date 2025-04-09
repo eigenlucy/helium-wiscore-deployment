@@ -280,15 +280,15 @@ void setup()
 	// Enable low power mode
 	api.system.lpm.set(1);
 
-/*
+
 #if defined(_VARIANT_RAK3172_) || defined(_VARIANT_RAK3172_SIP_)
 // No BLE
 #else
-	Serial6.begin(115200, RAK_AT_MODE);
+	Serial.begin(115200, RAK_AT_MODE);
 	//api.ble.advertise.start(30);
   api.ble.advertise.stop();
 #endif
-*/
+
 
 	// Initialize RAK1904
 	has_rak1904 = init_rak1904();
