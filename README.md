@@ -7,6 +7,7 @@ Uses [WisBlock-API-V2](https://github.com/beegee-tokyo/WisBlock-API-V2)
 
 ### AT+Command Configuration, Custom ATC Commands, OTAA enrollment via AT Command
 | Description | Command |
+| --------- | --------- |
 | Set Channel Band, For US915 set to band 5 | AT+BAND=5 |
 | Set Channel Mask | AT+MASK=002 |
 | Read devEUI | AT+DEVEUI=? |
