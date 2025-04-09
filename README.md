@@ -61,3 +61,5 @@ $ nrfutil nrf5sdk-tools dfu serial -pkg buoyfish_tracker_v1_dfu_nrfutil.zip -p /
 ```
 
 ## Chirpstack Device Management
+![Picture of the Chirpstack Console with arrows indicating the submenus device registration is acccesed under (Tenant/Applications/)](https://github.com/eigenlucy/helium-wiscore-deployment/blob/master/refs/DeviceEnrollment1.png)
+![Picture of the Chirpstack Console with arrows indicating the fields to fill out for device enrollment (Name, Device EUI, Device Profile, Join EUI)](https://github.com/eigenlucy/helium-wiscore-deployment/blob/master/refs/DeviceEnrollment2.png)
