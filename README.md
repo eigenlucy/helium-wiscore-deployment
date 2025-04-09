@@ -76,3 +76,15 @@ $ nrfutil nrf5sdk-tools dfu serial -pkg buoyfish_tracker_v1_dfu_nrfutil.zip -p /
 ![Flow chart showing the movement of data from the through lorawan/helium to chirpstack/node-red](https://github.com/eigenlucy/helium-wiscore-deployment/blob/master/refs/NetworkDiagram.png)
 ![Network Diagram Showing the Device Enrollment Process](https://github.com/eigenlucy/helium-wiscore-deployment/blob/master/refs/Device_Registration_Process.png)
 
+## Power Usage Test Results
+### Test setup
+Power usage was monitored with a Keithly 2450 SMU in 4-wire source V/measure W mode. Force leads were connected to the RAK19007 JST header, with sense leads soldered directly to the boards' header pins. Below I will keep notes on the effects of a variety of parameters on the average and peak power usage of the device. In addition to testing a variety of software-configured parameters, such as enabling/disabling low power mode and adjusting timer intervals, we are testing the effect of sparse and overcrowded network conditions on average power usage. Packet transmission frequency, RF TX power, and time on air/SF/data-rate are monitored on an oscilloscope via directional coupler/RF power sensor.
+
+
+This setup was based on the instructions provided in the LoRa Alliance Gateway Testing and Measurement Guidelines
+```
+LoRa Gateway under test -IN-> 30dB attenuation -> ZX30-9-4-S+ directional coupler -OUT-> 50ohm RF dummy load / LoRa Spec Antenna
+                                                          \
+                                                           `-CPL-> ZX47-40LN-S+ Power Sensor -> 500Ohm Resistor -> SIGNAL_OUT -> 500Ohm Resistor -> gnd
+
+```
