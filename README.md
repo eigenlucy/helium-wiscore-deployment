@@ -21,6 +21,7 @@
 ![Block diagram showing the structure of the API and application functions, taken from BeeGee-Tokyo's WisBlock-API-V2 Repo](https://github.com/eigenlucy/helium-wiscore-deployment/blob/master/refs/APIFirmwareStructure.png)
 
 ## AT+Command Configuration, Custom ATC Commands, OTAA enrollment via AT Command
+### AT Configuration Command List
 | Description | Command |
 | --------- | --------- |
 | Set Channel Band, For US915 set to band 5 | AT+BAND=5 |
