@@ -7,6 +7,8 @@
 [RakWireless Wiscore Platformio Configuration Guide](https://learn.rakwireless.com/hc/en-us/articles/26687276346775-How-To-Perform-Installation-of-Board-Support-Package-in-PlatformIO)
 
 ## Firmware Overview
+![Flow chart showing the states and events the device progresses through after booting, taken from BeeGee-Tokyo's WisBlock-API-V2 Repo](https://github.com/eigenlucy/helium-wiscore-deployment/blob/master/refs/firmware_overview.png)
+![Block diagram showing the structure of the API and application functions, taken from BeeGee-Tokyo's WisBlock-API-V2 Repo](https://github.com/eigenlucy/helium-wiscore-deployment/blob/master/refs/APIFirmwareStructure.png)
 
 ## AT+Command Configuration, Custom ATC Commands, OTAA enrollment via AT Command
 | Description | Command |
