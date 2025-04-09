@@ -7,6 +7,16 @@
 [RakWireless Wiscore Platformio Configuration Guide](https://learn.rakwireless.com/hc/en-us/articles/26687276346775-How-To-Perform-Installation-of-Board-Support-Package-in-PlatformIO)
 
 ## Firmware Overview
+| Program | Description |
+| -------------- | -------------- |
+| buoyfish-tracker.ino | main program of the firmware. the events are all attached and configured here. once the device boots, everything is triggered by the events and timers attached in the setup |
+| app.h | Enable/disable MYLOG debug, configure Cayenne LPP channels for sensors, initialize sensor variables, forward declarations, etc |
+| custom_at.cpp | contains the custom ATC+Commands used to program the device over serial |
+| dr_calculator.cpp | Automatically adjusts datarate / spreading factor / time on air according to payload size |
+| RAK1904_acc.cpp | For the rak1904 accelerometer board. Assign WisBlock slot with IO assignments |
+| RAK12500_gnss.cpp | for the rak12500 gps board. Assign WisBlock slot with IO assignments |
+| wisblock_cayenne.cpp / wisblock_cayenne.h | Handle the formatting of sensor data as lora packets |
+
 ![Flow chart showing the states and events the device progresses through after booting, taken from BeeGee-Tokyo's WisBlock-API-V2 Repo](https://github.com/eigenlucy/helium-wiscore-deployment/blob/master/refs/firmware_overview.png)
 ![Block diagram showing the structure of the API and application functions, taken from BeeGee-Tokyo's WisBlock-API-V2 Repo](https://github.com/eigenlucy/helium-wiscore-deployment/blob/master/refs/APIFirmwareStructure.png)
 
